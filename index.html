@@ -114,6 +114,14 @@ a{color:inherit}
 .shot::after{bottom:10px;right:10px;border-left:0;border-top:0}
 .shot>span{position:relative;background:var(--surface-2);padding:6px 10px;font:500 .68rem/1.5 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);max-width:26ch}
 
+/* real media inside frames */
+.shot.has{padding:0;background:var(--film)}
+.shot.has::before,.shot.has::after{display:none}
+.shot.has img,.shot.has video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.shot.photo .hud{color:#464D55}.shot.photo .hud .rec{color:#C40000}
+.shot.has.contain img{object-fit:contain;background:var(--surface-2)}
+.r34 .shot{aspect-ratio:958/1278}.r3 .shot{aspect-ratio:1600/552}.rfeed .shot{aspect-ratio:718/750}.r1610 .shot{aspect-ratio:16/10}.r32 .shot{aspect-ratio:3/2}
+
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(32px,6vw,96px)}
 .about h2{font-size:var(--t-2xl);margin-top:18px}
@@ -303,9 +311,9 @@ a{color:inherit}
       <div class="hv">
         <span class="ghost g1" aria-hidden="true"></span>
         <span class="ghost g2" aria-hidden="true"></span>
-        <div class="shot portrait" role="img" aria-label="Portrait of Omkar Salunkhe (photo to be added)">
+        <div class="shot portrait has photo">
+          <img src="assets/omkar-profile.jpg" alt="Omkar Salunkhe seated on a stool holding a cinema camera, in front of the word REC." width="1000" height="1258" fetchpriority="high">
           <div class="hud t" aria-hidden="true"><span class="rec">● REC</span><span>Pune, IN</span></div>
-          <span class="ph">[ADD PROFILE PHOTO · 4:5 portrait, camera in hand]</span>
           <div class="hud b" aria-hidden="true"><span>9:16 · 1:1 · 16:9</span><span>Frame 01</span></div>
         </div>
       </div>
@@ -370,7 +378,7 @@ a{color:inherit}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Selected work</p>
-      <h2 id="work-h">Five projects, ordered by how much they prove.</h2>
+      <h2 id="work-h">Four projects, ordered by how much they prove.</h2>
       <p>Ranked by strategic weight and measurable outcome, not by date.</p>
     </div>
     <div class="chips" id="workChips" role="group" aria-label="Filter projects"></div>
@@ -435,7 +443,7 @@ a{color:inherit}
     </div>
     <div class="tl">
       <article class="job">
-        <div class="when"><b>2 years</b><span class="ph">[ADD DATES]</span><br>Education</div>
+        <div class="when"><b>2 years</b><span>Education</span></div>
         <div>
           <h3>Indo British Group of Schools</h3>
           <p class="role">Cinematographer &amp; Social Media Manager</p>
@@ -448,10 +456,10 @@ a{color:inherit}
         </div>
       </article>
       <article class="job">
-        <div class="when"><b><span class="ph">[ADD DURATION]</span></b><span class="ph">[ADD DATES]</span><br>Social wellbeing</div>
+        <div class="when"><b>Freelance</b><span>Social wellbeing</span></div>
         <div>
           <h3>Listening Matters</h3>
-          <p class="role">Social media, content strategy and creative direction <span class="ph">[ADD: freelance / contract / volunteer]</span></p>
+          <p class="role">Social media, content strategy and creative direction (freelance)</p>
           <ul>
             <li>Built the brand's Instagram and Facebook presence around one clear idea: non-judgemental listening.</li>
             <li>Wrote reel scripts and hooks, designed creatives and promoted community events and an exhibition.</li>
@@ -460,7 +468,7 @@ a{color:inherit}
         </div>
       </article>
       <article class="job">
-        <div class="when"><b>6 months</b><span class="ph">[ADD DATES]</span><br>Sports</div>
+        <div class="when"><b>6 months</b><span>Sports</span></div>
         <div>
           <h3>Hockey Maharashtra</h3>
           <p class="role">Social Media Manager</p>
@@ -472,7 +480,7 @@ a{color:inherit}
         </div>
       </article>
       <article class="job">
-        <div class="when"><b>8 months</b><span class="ph">[ADD DATES]</span><br>Sports</div>
+        <div class="when"><b>8 months</b><span>Sports</span></div>
         <div>
           <h3>Eathlia</h3>
           <p class="role">Social Media Manager &amp; Graphic Designer</p>
@@ -558,6 +566,10 @@ a{color:inherit}
 (function(){
   var ph=function(t){return '<span class="ph">'+t+'</span>'};
   var NP='<span class="np">Not provided</span>';
+  var IMG={ibgs:['assets/ibgs-brand-banner.jpg','Indo-British Global School students in uniform, standing back to back'],
+    listening:['assets/listening-matters-mural.jpg','Listening Matters mural: In a world where everyone is shouting, here is a place that simply listens'],
+    films:['assets/ibgs-school-film-poster.jpg','Teacher walking between students in an Indo-British classroom'],
+    eathlia:['assets/eathlia-sport-tech-post.jpg','Eathlia Did You Know post on sport tech and NEP 2020',1]};
 
   /* ---------- CASE STUDY + PROJECT DATA (edit here) ---------- */
   var CS=[
@@ -577,7 +589,7 @@ a{color:inherit}
    results:[['5M','views on the admission campaign'],['500','admission enquiries from digital campaigns'],['1.2K → 6.3K','Instagram followers'],['+65%','Instagram engagement growth'],['100+','reels, videos, creatives and campaign assets'],['NP','Campaign dates, ad spend, cost per enquiry']],
    note:''},
   {id:'listening',name:'Listening Matters',brand:'Listening Matters',industry:'Social wellbeing / community initiative',cat:'Brand content',
-   role:'Social media, content strategy, creative direction, copywriting, reel concepts, video, design, event promotion',duration:ph('[ADD DURATION]'),platforms:'Instagram, Facebook and other digital channels',
+   role:'Social media, content strategy, creative direction, copywriting, reel concepts, video, design, event promotion',duration:'Freelance',platforms:'Instagram, Facebook and other digital channels',
    card:'A digital presence for a listening-focused community initiative, built to explain a simple idea without sounding like therapy.',metric:['45K','views'],
    rows:[
     ['Challenge','Explain non-judgemental listening in a simple, relatable way, and separate it from therapy, counselling and advice-based services.'],
@@ -607,21 +619,6 @@ a{color:inherit}
     ['Key learning','A school is hard to explain and easy to show. Footage of real moments does more work than a long description. '+ph('[REVIEW: rewrite in your own words]')]],
    results:[['50','major photo and video projects, concept to published'],['100+','reels, videos, creatives and campaign assets'],['NP','Views per film, watch time, YouTube subscribers']],
    note:''},
-  {id:'hockey',name:"Women's National Championship Coverage",brand:'Hockey Maharashtra',industry:'Sports',cat:'Event content',
-   role:'Social Media Manager',duration:'6 months',platforms:'Instagram, YouTube',
-   card:"Match-day updates, tournament highlights and dedicated coverage of the Women's National Championship.",metric:['55','creatives & videos'],
-   rows:[
-    ['Challenge','Keep a state hockey body visible and current across tournaments, matches and announcements, where timing decides whether content gets seen.'],
-    ['Objective','Strengthen Hockey Maharashtra\'s digital presence and keep its community engaged.'],
-    ['Audience','Hockey players, athletes, coaches, parents, sports communities and followers of Maharashtra hockey.'],
-    ['Strategy','Content built around the sports calendar: match-day updates, tournament highlights, player and team features, achievement posts and key announcements.'],
-    ['Creative direction','Sports-led visuals: photographs, Reels, Stories and YouTube videos, kept consistent across the account.'],
-    ['Execution','Dedicated social media coverage for the Women\'s National Championship, plus ongoing match, team and achievement content on Instagram and YouTube.'],
-    ['My contribution','Content planning, creatives, event coverage, publishing and audience engagement.'],
-    ['Results',null],
-    ['Key learning','In sport, timing is part of the creative. Content that lands during the match does more than polished content the next week. '+ph('[REVIEW: rewrite in your own words]')]],
-   results:[['55','creatives and videos in six months'],['NP','Reach, views, follower growth, engagement rate']],
-   note:"Improved consistency, timeliness and overall quality of Hockey Maharashtra's digital content."},
   {id:'eathlia',name:'Sports Brand Social Media',brand:'Eathlia',industry:'Sports',cat:'Social creatives',
    role:'Social Media Manager & Graphic Designer',duration:'8 months',platforms:'Instagram, Facebook',
    card:'Planning, design and publishing for a sports brand speaking to young, active consumers.',metric:['8','months'],
@@ -670,7 +667,7 @@ a{color:inherit}
     var list=CS.filter(function(c){return wsel==='All'||c.cat===wsel});
     $('#workGrid').innerHTML=list.map(function(c,i){
       var feat=(wsel==='All'&&i===0)?' feature':'';
-      return '<article class="card'+feat+'"><div class="shot" role="img" aria-label="Visual for '+esc(c.name)+' (to be added)"><span>'+ph('[ADD KEY VISUAL]')+'<br>'+esc(c.name)+'</span></div>'+
+      return '<article class="card'+feat+'">'+(IMG[c.id]?'<div class="shot has'+(IMG[c.id][2]?' contain':'')+'"><img src="'+IMG[c.id][0]+'" alt="'+esc(IMG[c.id][1])+'" loading="lazy"></div>':'<div class="shot" role="img" aria-label="Visual for '+esc(c.name)+' (to be added)"><span>'+ph('[ADD KEY VISUAL]')+'<br>'+esc(c.name)+'</span></div>')+
       '<div style="display:grid;gap:14px;align-content:start"><div class="meta"><span class="cat">'+esc(c.cat)+'</span><span>'+esc(c.industry)+'</span></div>'+
       '<div><h3>'+esc(c.name)+'</h3><p class="brand-line">'+esc(c.brand)+'</p></div>'+
       '<p class="d">'+esc(c.card)+'</p>'+
@@ -716,30 +713,34 @@ a{color:inherit}
   var LM1='https://www.instagram.com/reel/Dc-m-Mgxlk2/?stkn=MW53YTBiNmJoaW9tNg==',LM2='https://www.instagram.com/reel/DdG8WDIxYwF/?stkn=cjI2b2lmd2JobXh6';
   var GC=['All','Social Media Management','Social Media Creatives','Instagram Reels','Video Production','Cinematography','Photography','Campaigns','Brand Content','Event Content'];
   var G=[
-   ['Reel','r916',['Instagram Reels','Campaigns'],'Indo British admission campaign reel','[ADD REEL COVER · 9:16]'],
-   ['Reel','r916',['Instagram Reels','Brand Content'],'Listening Matters reel','[ADD REEL COVER · 9:16]',LM1],
-   ['Reel','r916',['Instagram Reels','Brand Content'],'Listening Matters reel','[ADD REEL COVER · 9:16]',LM2],
-   ['Reel','r916',['Instagram Reels','Event Content'],'Hockey Maharashtra match-day reel','[ADD REEL COVER · 9:16]'],
-   ['Film','r169',['Video Production','Cinematography'],'Indo British school promotional film','[ADD FILM STILL · 16:9]'],
-   ['Film','r169',['Video Production','Event Content'],'Hockey Maharashtra tournament highlights','[ADD YOUTUBE THUMBNAIL · 16:9]'],
-   ['Frame grabs','r169',['Cinematography'],'Campus film frame grabs','[ADD 3-4 FRAME GRABS · 16:9]'],
-   ['Post','r11',['Social Media Creatives','Campaigns'],'Indo British admission creative','[ADD CREATIVE · 1:1]'],
-   ['Post','r45',['Social Media Creatives','Brand Content'],'Listening Matters awareness post','[ADD POST · 4:5]'],
-   ['Post','r11',['Social Media Creatives'],'Eathlia promotional creative','[ADD CREATIVE · 1:1]'],
-   ['Post','r45',['Social Media Creatives','Event Content'],'Hockey Maharashtra player feature','[ADD POST · 4:5]'],
-   ['Story','r916',['Social Media Creatives','Event Content'],'Indo British festival Stories','[ADD STORY · 9:16]'],
-   ['Photograph','r45',['Photography','Event Content'],'School event photography','[ADD PHOTO · 4:5]'],
-   ['Photograph','r45',['Photography','Event Content'],'Hockey tournament photography','[ADD PHOTO · 4:5]'],
-   ['Photograph','r11',['Photography','Brand Content'],'Campus and student photography','[ADD PHOTO · 1:1]'],
-   ['Feed grid','r11',['Social Media Management'],'Instagram feed grid, Indo British','[ADD FEED SCREENSHOT · 1:1]'],
-   ['Planning','r169',['Social Media Management'],'Content calendar sample','[ADD CALENDAR SCREENSHOT · 16:9]'],
-   ['Campaign','r169',['Campaigns','Event Content'],'Listening Matters event and exhibition promotion','[ADD CAMPAIGN SET · 16:9]']
+   ['Reel','r916',['Instagram Reels','Campaigns'],'Indo British admission campaign reel','[ADD REEL COVER · 9:16]','https://www.instagram.com/reel/DZKo790qzIg/?stkn=ZmJhbmhiMWtmeGs4',0,{img:'assets/ibgs-admission-reel.jpg',alt:'Indo-British Global School admission reel cover: Learning Today, Leading Tomorrow'}],
+   ['Reel','r916',['Instagram Reels','Brand Content'],'Listening Matters reel: Listening Matters','[ADD REEL COVER · 9:16]',LM1,0,{img:'assets/listening-matters-reel-1.jpg',alt:'Two people in conversation at a cafe table, captioned Listening Matters'}],
+   ['Reel','r916',['Instagram Reels','Brand Content'],'Listening Matters reel: Listening','[ADD REEL COVER · 9:16]',LM2,0,{img:'assets/listening-matters-reel-2.jpg',alt:'Coffee being poured into a cup, captioned Listening, with care, empathy is important'}],
+   ['Film','r169',['Video Production','Cinematography'],'Indo British World Pre School film: early learning','[ADD FILM STILL · 16:9]',0,0,{img:'assets/ibwps-early-learning-film-thumb.jpg',alt:'Preschool children in pink uniforms working on wooden fruit puzzles at a green table'}],
+   ['Post','r11',['Social Media Creatives','Event Content'],'Hockey Maharashtra Champions creative: Senior Women National Championship 2024','[ADD CREATIVE]',0,0,{img:'assets/hockey-maharashtra-champions-creative.jpg',alt:'Hockey Maharashtra Champions creative for the 14th Hockey India Senior Women National Championship 2024, Hockey Haryana team with the trophy'}],
+   ['Film','r169',['Video Production','Cinematography'],'Indo British school promotional film','[ADD FILM STILL · 16:9]','https://youtu.be/5OflbmDhars?si=efT3-hY6JCw22x4L','Watch on YouTube ↗',{video:'assets/ibgs-school-film.mp4',poster:'assets/ibgs-school-film-poster.jpg',alt:'Indo British school film: classroom and campus footage'}],
+   ['Post','r11',['Social Media Creatives','Campaigns'],'Indo British creative: The Architecture of the Better Human','[ADD CREATIVE]',0,0,{img:'assets/ibgs-better-human-creative.jpg',alt:'IBGS creative: The Architecture of the Better Human, children building a project together at a table'}],
+   ['Post','r1610',['Social Media Creatives','Campaigns'],'Indo British brand creative: Discovering Happy Global Citizens','[ADD CREATIVE]',0,0,{img:'assets/ibgs-brand-banner.jpg',alt:'Indo-British Global School creative with two students and the line Discovering Happy Global Citizens'}],
+   ['Post','r32',['Social Media Creatives','Brand Content'],'Listening Matters awareness creative','[ADD POST]',0,0,{img:'assets/listening-matters-mural.jpg',alt:'Listening Matters mural creative with the line In a world where everyone is shouting, here is a place that simply listens'}],
+   ['Post','r45',['Social Media Creatives'],'Eathlia sport tech creative','[ADD CREATIVE · 4:5]',0,0,{img:'assets/eathlia-sport-tech-post.jpg',alt:'Eathlia Did You Know creative: sport tech aligns with NEP 2020'}],
+   ['Story','r916',['Social Media Creatives','Event Content'],'Indo British Wonder Mela invitation, Chikkabanavara','[ADD STORY · 9:16]',0,0,{img:'assets/ibgs-wonder-mela-invite.jpg',alt:'Wonder Mela invitation for the grand inauguration of IBGS Chikkabanavara'}],
+   ['Photograph','r32',['Photography','Event Content'],'School event photography: Investiture ceremony','[ADD PHOTO]',0,0,{img:'assets/ibgs-investiture.jpg',alt:'Indo-British Global School Investiture ceremony group photo of student leaders with teachers'}],
+   ['Photograph','r11',['Photography','Event Content'],'Hockey tournament photography: Women\'s National Championship','[ADD PHOTO]',0,0,{img:'assets/hockey-maharashtra-womens-nationals.jpg',alt:'Women\'s national hockey championship match at Major Dhyanchand Hockey Stadium, Haryana in orange against a team in red'}],
+   ['Feed grid','rfeed',['Social Media Management'],'Instagram feed, Indo British Group of Schools','',0,0,{img:'assets/ibgs-instagram-feed.jpg',alt:'Indo-British Group of Schools Instagram profile and top posts: 7 Attributes, Admissions Open, Why Indo-British Global School'}],
+   ['Planning','r3',['Social Media Management'],'Content calendar: October 2026, Seven Attributes series','',0,0,{img:'assets/ibgs-content-calendar-oct-2026.jpg',alt:'October 2026 school social media content calendar with date, content pillar, post idea, format, branch, shoot and design needs, and status'}],
+   ['Outreach','r34',['Campaigns','Event Content'],'Listening Matters street outreach, Kothrud Pune','',0,0,{img:'assets/listening-matters-kothrud-outreach.jpg',alt:'Listening Matters outreach in Kothrud, Pune: a volunteer and a child beside the Just Listening board'}],
+   ['Post','r45',['Social Media Creatives','Brand Content'],'Listening Matters explainer: What is Listening Matters?','',0,0,{img:'assets/listening-matters-what-is.jpg',alt:'Listening Matters explainer creative: what we do and do not do, with the words speak your mind out'}],
+   ['Post','r11',['Social Media Creatives','Campaigns'],'Indo British admissions creative: Nagarbhavi, Bengaluru','',0,0,{img:'assets/ibgs-nagarbhavi-admissions.jpg',alt:'Indo-British Global School Admissions Open creative for the Nagarbhavi, Bengaluru campus, playgroup to Grade VIII, 2026-27'}],
   ];
   var gsel='All';
   function renderGal(){
     $('#galChips').innerHTML=GC.map(function(c){return '<button type="button" class="chip" data-c="'+esc(c)+'" aria-pressed="'+(c===gsel)+'">'+esc(c)+'</button>'}).join('');
     $('#gallery').innerHTML=G.filter(function(g){return gsel==='All'||g[2].indexOf(gsel)>-1}).map(function(g){
-      return '<figure class="tile '+g[1]+'"><div class="shot" role="img" aria-label="'+esc(g[3])+' (to be added)"><span>'+ph(g[4])+'</span></div><figcaption><span class="k">'+g[0]+' · '+g[2][0]+'</span><span class="n">'+esc(g[3])+'</span>'+(g[5]?'<a href="'+g[5]+'" target="_blank" rel="noopener">Watch on Instagram ↗</a>':'')+'</figcaption></figure>';
+      var m=g[7],box;
+      if(m&&m.video)box='<div class="shot has"><video controls preload="none" playsinline poster="'+m.poster+'" aria-label="'+esc(m.alt)+'"><source src="'+m.video+'" type="video/mp4"></video></div>';
+      else if(m)box='<div class="shot has"><img src="'+m.img+'" alt="'+esc(m.alt)+'" loading="lazy"></div>';
+      else box='<div class="shot" role="img" aria-label="'+esc(g[3])+' (to be added)"><span>'+ph(g[4])+'</span></div>';
+      return '<figure class="tile '+g[1]+'">'+box+'<figcaption><span class="k">'+g[0]+' · '+g[2][0]+'</span><span class="n">'+esc(g[3])+'</span>'+(g[5]?'<a href="'+g[5]+'" target="_blank" rel="noopener">'+(g[6]||'Watch on Instagram ↗')+'</a>':'')+'</figcaption></figure>';
     }).join('');
   }
   $('#galChips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;gsel=b.getAttribute('data-c');renderGal()});
